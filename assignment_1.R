@@ -62,6 +62,28 @@ print(ans)
 
 #Problem 4:
 n=as.integer(readline(prompt="enter a num: "))
+cat("Simple Calculator\n")
+cat("1. Add\n")
+cat("2. Subtract\n")
+cat("3. Multiply\n")
+cat("4. Divide\n")
+
+choice <- as.integer(readline("Enter choice (1/2/3/4): "))
+
+if (choice %in% 1:4) {
+  num1 <- as.numeric(readline("Enter first number: "))
+  num2 <- as.numeric(readline("Enter second number: "))
+  
+  result <- switch(choice,
+                   `1` = num1 + num2,
+                   `2` = num1 - num2,
+                   `3` = num1 * num2,
+                   `4` = if (num2 != 0) num1 / num2 else "Error: Division by zero")
+  
+  cat("Result:", result, "\n")
+} else {
+  cat("Invalid choice.\n")
+}
 
 
 #Problem 5:
