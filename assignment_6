@@ -1,0 +1,67 @@
+//install.packages() in console, select bengalue nd prcma
+library(pracma)
+
+#problem 1:
+
+f=function(x,y){
+ 2*(2*x+3*y)/5
+}
+integral2(f,0,1,0,1)$Q
+integral2(f,0,1,0,1)$error
+
+f1=function(y){
+ f(1,y)
+}
+integral(f1,0,1)
+
+f2=function(x){
+ f(x,0)
+}
+integral(f2,0,1)
+
+
+g_xy = function(x,y){
+ x*y*f(x,y)
+}
+integral2(g_xy,0,1,0,1)
+
+
+#problem 2:
+
+x_val=0:3
+y_val=0:2
+
+fx=function(x,y){
+ (x+y)/30
+}
+
+matr=c()
+
+matr=matrix(c(fx(0,0:2),fx(1,0:2),fx(2,0:2),fx(3,0:2)),4,3,byrow=TRUE)
+matr
+
+sum(matr)
+
+x_dis=apply(matr,c(1),sum)
+print(x_dis)
+y_dis=apply(matr,c(2),sum)
+print(y_dis)
+s=matr[1,2]/colSums(matr)[2]
+print(s)
+
+x=0:3
+y=0:2
+e_x=sum(x*x_dis)
+print(e_x)
+e_y=sum(y*y_dis)
+print(e_y)
+
+exx=sum(x*x*x_dis)
+print(exx)
+eyy=sum(y*y_dis)
+print(eyy)
+
+varx=exx - (e_x*e_x)
+print(varx)
+vary=eyy - (e_y*e_y)
+print(vary)
